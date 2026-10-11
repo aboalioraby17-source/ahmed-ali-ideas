@@ -1,79 +1,460 @@
+
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="المساحة الرقمية لأحمد علي — أفكار، تقنية، وإبداع.">
-  <title>Ahmed Ali | مساحة الأفكار</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <meta name="theme-color" content="#10101a">
+  <meta name="description" content="الموقع الشخصي لأحمد علي، مساحة للأفكار والصور والمشاريع.">
+  <title>أحمد علي | مساحة الأفكار</title>
+
+  <style>
+    :root {
+      --bg: #10101a;
+      --surface: #191927;
+      --text: #f4f3ff;
+      --muted: #b3b0c8;
+      --accent: #a99aff;
+      --border: #302e45;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 85px;
+    }
+
+    body {
+      font-family: Tahoma, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.9;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      font: inherit;
+    }
+
+    .container {
+      width: min(1080px, 90%);
+      margin-inline: auto;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(16, 16, 26, 0.96);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav {
+      min-height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .logo {
+      color: var(--accent);
+      font-size: 21px;
+      font-weight: bold;
+      white-space: nowrap;
+    }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+      align-items: center;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .nav-links a:hover,
+    .nav-links a:focus {
+      color: var(--accent);
+    }
+
+    .hero {
+      padding: 95px 0 85px;
+      text-align: center;
+      background:
+        radial-gradient(ellipse at top, #34285d 0%, transparent 68%);
+    }
+
+    .eyebrow {
+      color: var(--accent);
+      font-size: 14px;
+    }
+
+    h1 {
+      font-size: clamp(36px, 8vw, 62px);
+      line-height: 1.3;
+      margin: 12px 0;
+    }
+
+    .hero p {
+      max-width: 640px;
+      margin: 0 auto 24px;
+      color: var(--muted);
+    }
+
+    .actions {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 10px 22px;
+      border-radius: 10px;
+      background: #8b78f7;
+      color: white;
+      border: 1px solid #8b78f7;
+    }
+
+    .button.secondary {
+      background: transparent;
+      border-color: var(--border);
+    }
+
+    .section {
+      padding: 62px 0;
+    }
+
+    .section-heading {
+      margin-bottom: 26px;
+    }
+
+    .section-heading h2 {
+      font-size: clamp(25px, 5vw, 34px);
+      margin-bottom: 5px;
+    }
+
+    .section-heading p {
+      color: var(--muted);
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .photo-card {
+      min-width: 0;
+      overflow: hidden;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      transition: transform 0.2s ease;
+    }
+
+    .photo-card:hover {
+      transform: translateY(-4px);
+    }
+
+    .photo-card img {
+      display: block;
+      width: 100%;
+      height: 280px;
+      object-fit: cover;
+      background: #242337;
+    }
+
+    .photo-card figcaption {
+      padding: 12px 14px;
+      color: var(--muted);
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 18px;
+    }
+
+    .card {
+      padding: 22px;
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      background: var(--surface);
+    }
+
+    .card h3 {
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+
+    .card p {
+      color: var(--muted);
+    }
+
+    .empty-gallery {
+      display: none;
+      color: var(--muted);
+      padding: 22px;
+      border: 1px dashed var(--border);
+      border-radius: 14px;
+    }
+
+    .contact-link {
+      color: var(--accent);
+      overflow-wrap: anywhere;
+    }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 24px 0;
+      text-align: center;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    @media (max-width: 700px) {
+      .nav {
+        padding: 14px 0;
+        flex-direction: column;
+      }
+
+      .nav-links {
+        justify-content: center;
+        gap: 10px 15px;
+      }
+
+      .hero {
+        padding: 65px 0;
+      }
+
+      .gallery {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+      }
+
+      .photo-card img {
+        height: 220px;
+      }
+    }
+
+    @media (max-width: 420px) {
+      .gallery {
+        grid-template-columns: 1fr;
+      }
+
+      .photo-card img {
+        height: 300px;
+      }
+    }
+  </style>
 </head>
+
 <body>
-  <div class="ambient ambient-one"></div>
-  <div class="ambient ambient-two"></div>
-  <header class="site-header">
-    <a class="brand" href="#home" aria-label="الصفحة الرئيسية"><span class="brand-mark">A</span><span>Ahmed <b>Ali</b></span></a>
-    <button class="menu-toggle" id="menuToggle" aria-label="فتح القائمة" aria-expanded="false">☰</button>
-    <nav class="nav-links" id="navLinks">
-      <a class="active" href="#home">الرئيسية</a>
-      <a href="#about">الفكرة</a>
-      <a href="#projects">المشاريع</a>
-      <a href="#contact">تواصل</a>
-      <button class="theme-toggle" id="themeToggle" aria-label="تغيير المظهر">☼</button>
-    </nav>
+  <header>
+    <div class="container nav">
+      <a class="logo" href="#home">أحمد علي</a>
+
+      <nav class="nav-links" aria-label="القائمة الرئيسية">
+        <a href="#home">الرئيسية</a>
+        <a href="#about">نبذة عني</a>
+        <a href="#gallery">صوري</a>
+        <a href="#ideas">أفكاري</a>
+        <a href="#projects">مشاريعي</a>
+        <a href="#contact">التواصل</a>
+      </nav>
+    </div>
   </header>
 
   <main>
-    <section class="hero section" id="home">
-      <div class="hero-copy reveal">
-        <span class="eyebrow"><span class="status-dot"></span> مساحة رقمية مستقلة</span>
-        <h1>أهلًا بك في<br><span>مساحة الأفكار.</span></h1>
-        <p>مكان صغير للأفكار الكبيرة؛ نكتشف فيه التقنية، ونجرّب أشياء جديدة، ونحوّل الخيال إلى مشاريع بسيطة.</p>
-        <div class="hero-actions">
-          <a class="button primary" href="#projects">اكتشف المساحة <span>↙</span></a>
-          <a class="button secondary" href="#about">اعرف الفكرة</a>
+    <section class="hero" id="home">
+      <div class="container">
+        <span class="eyebrow">أهلًا بك في مساحتي الشخصية</span>
+        <h1>أحمد علي</h1>
+        <p>
+          مساحة شخصية أشارك فيها أفكاري وصوري ومشاريعي،
+          وأوثّق رحلتي في التعلّم والتطوير واكتشاف عالم التكنولوجيا.
+        </p>
+
+        <div class="actions">
+          <a class="button" href="#gallery">استكشف صوري</a>
+          <a class="button secondary" href="#projects">شاهد مشاريعي</a>
         </div>
-        <div class="hero-note"><span class="note-line"></span> لا حدود للفكرة إلا ألّا نبدأ.</div>
-      </div>
-      <div class="hero-art reveal" aria-label="رسم تجريدي لبوابة رقمية">
-        <div class="orbit orbit-a"></div><div class="orbit orbit-b"></div>
-        <div class="planet"><div class="planet-shine"></div><span class="planet-symbol">✦</span></div>
-        <div class="float-card card-top"><span class="mini-icon">⌘</span><div><strong>فكرة جديدة</strong><small>جاهزة للاستكشاف</small></div></div>
-        <div class="float-card card-bottom"><span class="mini-icon blue">✧</span><div><strong>وضع الإبداع</strong><small>نشط دائمًا</small></div></div>
-        <div class="art-caption">IDEAS / EXPLORE / CREATE</div>
-      </div>
-      <a class="scroll-hint" href="#about"><span></span> اكتشف المزيد</a>
-    </section>
-
-    <section class="section intro-section" id="about">
-      <div class="section-heading reveal"><span class="section-kicker">01 / الفكرة</span><h2>مش سيرة ذاتية…<br><span>دي مساحة للتجربة.</span></h2></div>
-      <div class="intro-content reveal">
-        <p>«مساحة الأفكار» عالم خيالي بسيط يحمل اسمي، لكنه لا يحكي تفاصيل حياتي. هو مكان لعرض أفكار ومشاريع تجريبية، والتعبير عن حب الاستكشاف والتعلّم بطريقة هادئة وعصرية.</p>
-        <div class="stat-row"><div><strong>01</strong><span>فضول</span></div><div><strong>∞</strong><span>احتمالات</span></div><div><strong>✦</strong><span>إبداع</span></div></div>
       </div>
     </section>
 
-    <section class="section projects-section" id="projects">
-      <div class="section-title-row reveal"><div><span class="section-kicker">02 / تجارب مختارة</span><h2>أفكار على الطاولة</h2></div><span class="title-aside">مشاريع خيالية قابلة للتطوير ↗</span></div>
-      <div class="project-grid">
-        <article class="project-card reveal"><div class="project-visual visual-purple"><span class="visual-orb"></span><span class="visual-glyph">✧</span><span class="project-number">01</span></div><div class="project-meta"><span>تجربة بصرية</span><span>01 — 03</span></div><h3>مدار</h3><p>واجهة تخيّلية لاستكشاف الأفكار كما لو كانت كواكب في فضاء واسع.</p><a href="#contact" class="text-link">استكشف الفكرة <span>↗</span></a></article>
-        <article class="project-card reveal"><div class="project-visual visual-blue"><div class="wave-line"></div><div class="wave-line second"></div><span class="visual-glyph">⌁</span><span class="project-number">02</span></div><div class="project-meta"><span>مختبر رقمي</span><span>02 — 03</span></div><h3>موجة</h3><p>تجربة صغيرة تتخيّل كيف تتحوّل البيانات إلى أشكال وحركة ممتعة.</p><a href="#contact" class="text-link">استكشف الفكرة <span>↗</span></a></article>
-        <article class="project-card reveal"><div class="project-visual visual-gold"><div class="sun-shape"></div><span class="visual-glyph">◌</span><span class="project-number">03</span></div><div class="project-meta"><span>مساحة هادئة</span><span>03 — 03</span></div><h3>لحظة</h3><p>صفحة بسيطة تجمع اقتباسًا ملهمًا مع خلفية تتغيّر حسب الوقت.</p><a href="#contact" class="text-link">استكشف الفكرة <span>↗</span></a></article>
+    <section class="section" id="about">
+      <div class="container">
+        <div class="section-heading">
+          <h2>نبذة عني</h2>
+          <p>كل يوم فرصة لتعلّم شيء جديد وصناعة شيء أفضل.</p>
+        </div>
+
+        <div class="card">
+          <p>
+            أنا أحمد علي، طالب مهتم بعالم الحاسبات والبرمجة
+            والذكاء الاصطناعي. أنشأت هذه المساحة لأجمع فيها
+            ذكرياتي وأفكاري وأعمالي في مكان واحد.
+          </p>
+        </div>
       </div>
     </section>
 
-    <section class="quote-section reveal">
-      <span class="quote-mark">“</span><p>كل مشروع كبير بدأ يومًا ما<br>بفضول صغير وفكرة أولى.</p><span class="quote-bottom">مبدأ مساحة الأفكار</span>
+    <section class="section" id="gallery">
+      <div class="container">
+        <div class="section-heading">
+          <h2>📸 معرض صوري</h2>
+          <p>صور وذكريات ولحظات أحب الاحتفاظ بها.</p>
+        </div>
+
+        <div class="gallery" id="photoGallery">
+          <!-- تُضاف الصور هنا تلقائيًا من قائمة الصور أدناه. -->
+        </div>
+
+        <p class="empty-gallery" id="galleryMessage">
+          لم تُضف الصور إلى المعرض بعد. أضف روابط صورك في قائمة الصور
+          داخل ملف index.html.
+        </p>
+      </div>
     </section>
 
-    <section class="section contact-section" id="contact">
-      <div class="contact-panel reveal"><div><span class="section-kicker">03 / الخطوة التالية</span><h2>عندك فكرة؟<br><span>خلّيها تبدأ.</span></h2><p>هذه واجهة تجريبية؛ يمكنك لاحقًا إضافة بريدك أو روابط حساباتك الحقيقية هنا.</p></div><a class="button primary" href="mailto:hello@example.com" id="contactButton">اكتب رسالة <span>↗</span></a></div>
+    <section class="section" id="ideas">
+      <div class="container">
+        <div class="section-heading">
+          <h2>💡 أفكاري</h2>
+          <p>أفكار أطمح إلى تطويرها وتحويلها إلى واقع.</p>
+        </div>
+
+        <div class="cards">
+          <article class="card">
+            <h3>التعلّم المستمر</h3>
+            <p>أؤمن أن المعرفة تتطور بالممارسة والصبر والاستمرار.</p>
+          </article>
+
+          <article class="card">
+            <h3>التكنولوجيا</h3>
+            <p>استكشاف التقنيات الحديثة وفهم كيفية عملها وتطويرها.</p>
+          </article>
+
+          <article class="card">
+            <h3>الإبداع</h3>
+            <p>تحويل الأفكار البسيطة إلى تجارب ومشاريع مفيدة.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="projects">
+      <div class="container">
+        <div class="section-heading">
+          <h2>💻 مشاريعي</h2>
+          <p>مساحة لعرض ما أتعلمه وما أنجزه في رحلتي.</p>
+        </div>
+
+        <div class="cards">
+          <article class="card">
+            <h3>الموقع الشخصي</h3>
+            <p>موقع يجمع نبذتي وصوري وأفكاري في تصميم واحد.</p>
+          </article>
+
+          <article class="card">
+            <h3>مشاريعي القادمة</h3>
+            <p>سأضيف هنا أعمالي الجديدة عندما تصبح جاهزة للعرض.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="contact">
+      <div class="container">
+        <div class="section-heading">
+          <h2>📩 تواصل معي</h2>
+          <p>
+            يمكنك إضافة بريدك الإلكتروني أو روابط حساباتك
+            الاجتماعية في هذا القسم.
+          </p>
+        </div>
+
+        <div class="card">
+          <p>
+            البريد الإلكتروني:
+            <span class="muted">أضف بريدك هنا عند رغبتك في نشره.</span>
+          </p>
+        </div>
+      </div>
     </section>
   </main>
 
-  <footer class="site-footer"><a class="brand" href="#home"><span class="brand-mark">A</span><span>Ahmed <b>Ali</b></span></a><span>صُمّم بشغف وفضول <span class="footer-star">✦</span></span><a href="#home" class="back-top">العودة للأعلى ↑</a></footer>
-  <script src="script.js"></script>
+  <footer>
+    <div class="container">
+      © <span id="year"></span> أحمد علي | مساحة الأفكار
+    </div>
+  </footer>
+
+  <script>
+    /*
+      أضف صورك هنا.
+      مثال:
+      { src: "images/photo1.jpg", caption: "صورتي الأولى" }
+
+      يجب أن يكون مسار الصورة واسم الملف مطابقين تمامًا
+      لما هو موجود في مستودع GitHub.
+    */
+
+    const photos = [
+      // استبدل الأمثلة التالية بأسماء صورك الحقيقية:
+      // { src: "images/photo1.jpg", caption: "لحظة مميزة" },
+      // { src: "images/photo2.jpg", caption: "من ذكرياتي" },
+      // { src: "images/photo3.jpg", caption: "يوم جميل" }
+    ];
+
+    const gallery = document.getElementById("photoGallery");
+    const message = document.getElementById("galleryMessage");
+
+    photos.forEach((photo) => {
+      const figure = document.createElement("figure");
+      figure.className = "photo-card";
+
+      const img = document.createElement("img");
+      img.src = photo.src;
+      img.alt = photo.caption || "صورة شخصية";
+      img.loading = "lazy";
+
+      const caption = document.createElement("figcaption");
+      caption.textContent = photo.caption || "ذكرى جميلة";
+
+      figure.appendChild(img);
+      figure.appendChild(caption);
+
+      img.addEventListener("error", () => {
+        figure.remove();
+        if (gallery.children.length === 0) {
+          message.style.display = "block";
+        }
+      });
+
+      gallery.appendChild(figure);
+    });
+
+    message.style.display = photos.length === 0 ? "block" : "none";
+
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
+  </script>
 </body>
 </html>
