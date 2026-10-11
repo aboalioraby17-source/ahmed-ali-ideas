@@ -2,367 +2,708 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Ahmed Ali | مساحة الأفكار</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#101827">
+  <meta name="description" content="الموقع الشخصي لأحمد علي، مساحة للأفكار والصور والموسيقى.">
+  <title>Ahmed Ali | مساحة الأفكار</title>
 
-<style>
-:root {
-  --bg:#0b1020;
-  --panel:#151e33;
-  --text:#f5f6ff;
-  --muted:#aab4cc;
-  --accent:#a494ff;
-}
-* {box-sizing:border-box}
-html {scroll-behavior:smooth}
-body {
-  margin:0;
-  font-family:Arial,Tahoma,sans-serif;
-  background:var(--bg);
-  color:var(--text);
-  line-height:1.8;
-}
-body.light {
-  --bg:#f3f5fc;
-  --panel:#fff;
-  --text:#18213b;
-  --muted:#606b82;
-  --accent:#6650cf;
-}
-a {color:inherit;text-decoration:none}
-button {font:inherit;cursor:pointer}
-.container {width:min(1100px,90%);margin:auto}
-header {
-  position:sticky;top:0;z-index:10;
-  background:var(--bg);
-  border-bottom:1px solid #8883;
-}
-nav {
-  min-height:70px;
-  display:flex;align-items:center;
-  justify-content:space-between;gap:15px;
-}
-.logo {font-size:22px;font-weight:bold;direction:ltr}
-.logo span,h1 span,h2 span {color:var(--accent)}
-.nav-links {display:flex;align-items:center;gap:18px}
-.nav-links a {color:var(--muted)}
-.btn {
-  display:inline-block;padding:10px 17px;
-  border:1px solid #8885;border-radius:10px;
-  background:var(--panel);color:var(--text);
-}
-.primary {background:var(--accent);color:#10152a;border:0}
-#menuBtn {display:none}
-.hero {
-  min-height:490px;padding:65px 0;
-  display:grid;grid-template-columns:1fr 1fr;
-  align-items:center;gap:35px;
-}
-h1 {font-size:clamp(36px,5vw,60px);line-height:1.4}
-p {color:var(--muted)}
-.hero-art {
-  min-height:300px;border-radius:25px;
-  display:grid;place-items:center;
-  background:radial-gradient(circle,#51458e,var(--panel) 65%);
-  border:1px solid #8884;
-}
-.planet {
-  width:150px;height:150px;border-radius:50%;
-  display:grid;place-items:center;font-size:65px;
-  background:linear-gradient(135deg,#c4b8ff,#56d6df);
-  color:#18213b;box-shadow:0 0 70px #a494ff55;
-}
-section {padding:55px 0}
-.section-title {margin-bottom:25px}
-h2 {font-size:clamp(27px,4vw,40px)}
-.grid {
-  display:grid;grid-template-columns:repeat(3,1fr);gap:18px;
-}
-.card {
-  padding:20px;border:1px solid #8884;
-  border-radius:17px;background:var(--panel);
-}
-.card-icon {
-  height:125px;display:grid;place-items:center;
-  border-radius:12px;font-size:48px;
-  background:linear-gradient(135deg,#51458e,#252b55);
-}
-.gallery-section {background:var(--panel)}
-.gallery {
-  display:grid;grid-template-columns:repeat(2,minmax(0,1fr));
-  gap:18px;
-}
-.photo {
-  overflow:hidden;border-radius:15px;
-  background:var(--bg);border:1px solid #8884;
-  cursor:zoom-in;
-}
-.photo img {
-  width:100%;height:320px;object-fit:cover;
-  display:block;transition:transform .3s;
-}
-.photo:hover img {transform:scale(1.03)}
-.caption {padding:10px 14px}
-.status {padding:0 14px 12px;color:var(--muted);font-size:13px}
-.quote {
-  text-align:center;padding:30px;
-  background:var(--panel);border-radius:18px;
-}
-.contact {
-  padding:25px;background:var(--panel);
-  border:1px solid #8884;border-radius:18px;
-}
-footer {padding:25px 0;border-top:1px solid #8884;text-align:center;color:var(--muted)}
-.lightbox {
-  display:none;position:fixed;inset:0;z-index:100;
-  background:#000e;align-items:center;justify-content:center;
-  padding:20px;
-}
-.lightbox.open {display:flex}
-.lightbox img {max-width:95%;max-height:85vh;object-fit:contain}
-#closeBox {
-  position:absolute;top:15px;left:15px;
-  padding:5px 15px;border:1px solid #888;
-  border-radius:8px;background:#222;color:white;font-size:25px;
-}
-@media(max-width:750px) {
-  #menuBtn {display:block}
-  .nav-links {
-    display:none;position:absolute;top:70px;right:5%;left:5%;
-    padding:18px;background:var(--panel);
-    border:1px solid #8884;border-radius:12px;
-    flex-direction:column;align-items:stretch;
-  }
-  .nav-links.open {display:flex}
-  .hero {grid-template-columns:1fr;padding:40px 0}
-  .grid {grid-template-columns:1fr}
-  .gallery {grid-template-columns:1fr}
-  .photo img {height:280px}
-}
-</style>
+  <style>
+    :root {
+      --bg: #f4f6fb;
+      --surface: #ffffff;
+      --text: #172033;
+      --muted: #687386;
+      --accent: #b68a45;
+      --border: #e3e7ef;
+      --nav: rgba(255,255,255,.92);
+      --shadow: 0 12px 35px rgba(20,30,50,.08);
+    }
+
+    body.dark {
+      --bg: #101827;
+      --surface: #192438;
+      --text: #f1f5fb;
+      --muted: #aab5c8;
+      --accent: #e0b66d;
+      --border: #2c3a50;
+      --nav: rgba(16,24,39,.94);
+      --shadow: 0 12px 35px rgba(0,0,0,.2);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 85px;
+    }
+
+    body {
+      font-family: Tahoma, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.8;
+      transition: background .25s, color .25s;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    button {
+      font: inherit;
+    }
+
+    .container {
+      width: min(1100px, 92%);
+      margin: auto;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: var(--nav);
+      border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(14px);
+    }
+
+    .navbar {
+      min-height: 72px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .brand {
+      text-decoration: none;
+      font-size: 19px;
+      font-weight: bold;
+    }
+
+    .brand span {
+      color: var(--accent);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 18px;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .nav-links a:hover {
+      color: var(--accent);
+    }
+
+    .theme-btn {
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--text);
+      border-radius: 12px;
+      padding: 7px 12px;
+      cursor: pointer;
+    }
+
+    .hero {
+      min-height: 360px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 65px 15px;
+      background:
+        radial-gradient(ellipse at top, rgba(182,138,69,.19), transparent 65%);
+    }
+
+    .hero-content {
+      max-width: 750px;
+    }
+
+    .eyebrow {
+      color: var(--accent);
+      font-weight: bold;
+      font-size: 14px;
+    }
+
+    h1 {
+      font-size: clamp(32px, 6vw, 52px);
+      line-height: 1.4;
+      margin: 12px 0;
+    }
+
+    .hero p {
+      color: var(--muted);
+      max-width: 600px;
+      margin: auto;
+    }
+
+    .hero-actions {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 25px;
+    }
+
+    .btn {
+      display: inline-block;
+      text-decoration: none;
+      border: 1px solid var(--accent);
+      border-radius: 12px;
+      padding: 10px 20px;
+      background: var(--accent);
+      color: #fff;
+      cursor: pointer;
+    }
+
+    .btn.secondary {
+      background: transparent;
+      color: var(--text);
+    }
+
+    section {
+      padding: 42px 0;
+    }
+
+    .section-heading {
+      text-align: center;
+      margin-bottom: 28px;
+    }
+
+    .section-heading h2 {
+      font-size: clamp(24px, 4vw, 32px);
+      margin-bottom: 5px;
+    }
+
+    .section-heading p {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .about-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 28px;
+      box-shadow: var(--shadow);
+      text-align: center;
+    }
+
+    .about-card p {
+      color: var(--muted);
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .photo-card {
+      overflow: hidden;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      box-shadow: var(--shadow);
+    }
+
+    .photo-card img {
+      width: 100%;
+      height: 240px;
+      display: block;
+      object-fit: cover;
+      cursor: pointer;
+      background: var(--border);
+      transition: transform .3s;
+    }
+
+    .photo-card:hover img {
+      transform: scale(1.035);
+    }
+
+    .photo-caption {
+      padding: 13px 15px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .image-error {
+      min-height: 200px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      text-align: center;
+      color: var(--muted);
+      background: var(--surface);
+    }
+
+    /* قسم الفنانين */
+
+    .artists-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 20px;
+    }
+
+    .artist-card {
+      overflow: hidden;
+      text-align: center;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      box-shadow: var(--shadow);
+      transition: transform .2s;
+    }
+
+    .artist-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .artist-cover {
+      min-height: 165px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 62px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .ramy {
+      background: linear-gradient(135deg, #243b55, #141e30);
+    }
+
+    .tamer {
+      background: linear-gradient(135deg, #614385, #516395);
+    }
+
+    .amr {
+      background: linear-gradient(135deg, #42275a, #734b6d);
+    }
+
+    .artist-info {
+      padding: 18px 14px 22px;
+    }
+
+    .artist-info h3 {
+      font-size: 21px;
+      margin-bottom: 5px;
+    }
+
+    .artist-info p {
+      color: var(--muted);
+      font-size: 14px;
+      margin-bottom: 16px;
+    }
+
+    .artist-link {
+      display: inline-block;
+      text-decoration: none;
+      background: var(--accent);
+      color: #fff;
+      padding: 9px 16px;
+      border-radius: 10px;
+      font-size: 14px;
+    }
+
+    .artist-link:hover {
+      opacity: .85;
+    }
+
+    .music-note {
+      text-align: center;
+      color: var(--muted);
+      font-size: 13px;
+      margin-top: 20px;
+    }
+
+    .contact-card {
+      text-align: center;
+      padding: 28px;
+      border-radius: 20px;
+      border: 1px solid var(--border);
+      background: var(--surface);
+    }
+
+    .contact-card p {
+      color: var(--muted);
+      margin-top: 8px;
+    }
+
+    footer {
+      margin-top: 30px;
+      padding: 25px 12px;
+      text-align: center;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    /* عارض الصور المكبرة */
+
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      background: rgba(0,0,0,.9);
+    }
+
+    .lightbox.open {
+      display: flex;
+    }
+
+    .lightbox img {
+      max-width: 95%;
+      max-height: 85vh;
+      object-fit: contain;
+      border-radius: 10px;
+    }
+
+    .close-lightbox {
+      position: absolute;
+      top: 15px;
+      left: 20px;
+      width: 44px;
+      height: 44px;
+      border: 0;
+      border-radius: 50%;
+      background: #fff;
+      color: #111;
+      font-size: 27px;
+      cursor: pointer;
+    }
+
+    @media (max-width: 760px) {
+      .navbar {
+        padding: 12px 0;
+        flex-direction: column;
+      }
+
+      .nav-links {
+        justify-content: center;
+        gap: 12px;
+      }
+
+      .gallery-grid,
+      .artists-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .photo-card img {
+        height: 190px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .gallery-grid,
+      .artists-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .photo-card img {
+        height: 240px;
+      }
+
+      .hero {
+        min-height: 300px;
+      }
+    }
+  </style>
 </head>
 
 <body>
-<header>
-  <nav class="container">
-    <a href="#home" class="logo">Ahmed <span>Ali</span></a>
-    <button class="btn" id="menuBtn" aria-expanded="false">☰ القائمة</button>
-    <div class="nav-links" id="navLinks">
-      <a href="#home">الرئيسية</a>
-      <a href="#about">من أنا</a>
-      <a href="#projects">المشاريع</a>
-      <a href="#gallery">معرض الصور</a>
-      <a href="#contact">تواصل</a>
-      <button class="btn" id="themeBtn">☼ تغيير المظهر</button>
-    </div>
-  </nav>
-</header>
 
-<main>
-<section class="container hero" id="home">
-  <div>
-    <p>✦ مساحة رقمية مستقلة</p>
-    <h1>أهلًا بك في<br><span>مساحة الأفكار</span></h1>
-    <p>مكان للأفكار الكبيرة والتقنية والإبداع. هنا نحول الفضول إلى تجارب، والأفكار إلى مشاريع.</p>
-    <a class="btn primary" href="#projects">اكتشف المشاريع ↓</a>
-    <a class="btn" href="#gallery">شاهد الصور</a>
-  </div>
-  <div class="hero-art"><div class="planet">✦</div></div>
-</section>
+  <header>
+    <nav class="navbar container">
+      <a class="brand" href="#home">
+        Ahmed Ali <span>| مساحة الأفكار</span>
+      </a>
 
-<section class="container" id="about">
-  <p>01 / من أنا</p>
-  <h2>مش مجرد موقع، دي <span>مساحة للتجربة</span></h2>
-  <p>أنا أحمد علي، وهذه مساحتي الرقمية لعرض الأفكار والمشاريع والتجارب الإبداعية والتقنية.</p>
-</section>
-
-<section class="container" id="projects">
-  <p>02 / تجارب مختارة</p>
-  <h2 class="section-title">أفكار على الطاولة</h2>
-  <div class="grid">
-    <article class="card">
-      <div class="card-icon">✧</div>
-      <h3>مدار</h3>
-      <p>تجربة بصرية لاستكشاف الأفكار والإبداع.</p>
-    </article>
-    <article class="card">
-      <div class="card-icon">⌁</div>
-      <h3>موجة</h3>
-      <p>أفكار تقنية وتجارب رقمية جديدة.</p>
-    </article>
-    <article class="card">
-      <div class="card-icon">◌</div>
-      <h3>لحظة</h3>
-      <p>مساحة هادئة تجمع البساطة والجمال.</p>
-    </article>
-  </div>
-</section>
-
-<section class="gallery-section" id="gallery">
-  <div class="container">
-    <p>03 / لحظات مختارة</p>
-    <h2>معرض <span>الصور</span></h2>
-    <p id="galleryStatus">جارٍ تحميل الصور...</p>
-
-    <div class="gallery">
-      <div class="photo">
-        <img loading="lazy"
-          src="https://raw.githubusercontent.com/aboalioraby17-source/ahmed-ali-ideas/main/IMG-20260921-WA0044.jpg"
-          alt="الصورة الأولى">
-        <div class="caption">الصورة الأولى</div>
-        <div class="status">جارٍ التحميل...</div>
+      <div class="nav-links">
+        <a href="#home">الرئيسية</a>
+        <a href="#about">من أنا</a>
+        <a href="#gallery">معرض الصور</a>
+        <a href="#artists">الفنانون</a>
+        <a href="#contact">تواصل</a>
+        <button class="theme-btn" id="themeToggle" type="button">
+          🌙 الوضع الليلي
+        </button>
       </div>
+    </nav>
+  </header>
 
-      <div class="photo">
-        <img loading="lazy"
-          src="https://raw.githubusercontent.com/aboalioraby17-source/ahmed-ali-ideas/main/IMG-20260929-WA0075.jpg"
-          alt="الصورة الثانية">
-        <div class="caption">الصورة الثانية</div>
-        <div class="status">جارٍ التحميل...</div>
+  <main>
+    <section class="hero" id="home">
+      <div class="hero-content">
+        <span class="eyebrow">أهلًا بك في مساحتي الخاصة</span>
+        <h1>مرحبًا بك في عالمي ✨</h1>
+        <p>
+          مساحة شخصية أشارك فيها أفكاري وصوري والأشياء التي أحبها،
+          من الذكريات الجميلة إلى الموسيقى التي تترك أثرًا في القلب.
+        </p>
+
+        <div class="hero-actions">
+          <a class="btn" href="#gallery">استكشف معرض الصور</a>
+          <a class="btn secondary" href="#artists">فنانون أحبهم 🎵</a>
+        </div>
       </div>
+    </section>
 
-      <div class="photo">
-        <img loading="lazy"
-          src="https://raw.githubusercontent.com/aboalioraby17-source/ahmed-ali-ideas/main/IMG-20261011-WA0030.jpg"
-          alt="الصورة الثالثة">
-        <div class="caption">الصورة الثالثة</div>
-        <div class="status">جارٍ التحميل...</div>
+    <section id="about">
+      <div class="container">
+        <div class="section-heading">
+          <h2>من أنا؟</h2>
+          <p>نبذة بسيطة عن صاحب الموقع</p>
+        </div>
+
+        <div class="about-card">
+          <h3>أحمد علي 👋</h3>
+          <p>
+            أحب الأفكار الجديدة والتقنية والتصميم والموسيقى.
+            أنشأت هذه المساحة لأجمع فيها الأشياء التي أحبها
+            وأشارك بعضًا من لحظاتي واهتماماتي.
+          </p>
+        </div>
       </div>
+    </section>
 
-      <div class="photo">
-        <img loading="lazy"
-          src="https://raw.githubusercontent.com/aboalioraby17-source/ahmed-ali-ideas/main/IMG-20261011-WA0032.jpg"
-          alt="الصورة الرابعة">
-        <div class="caption">الصورة الرابعة</div>
-        <div class="status">جارٍ التحميل...</div>
+    <section id="gallery">
+      <div class="container">
+        <div class="section-heading">
+          <h2>📸 معرض الصور</h2>
+          <p>مجموعة من الصور والذكريات</p>
+        </div>
+
+        <div class="gallery-grid">
+
+          <article class="photo-card">
+            <img
+              src="https://raw.githubusercontent.com/aboalioraby17-source/ahmed-ali-ideas/main/IMG-20260921-WA0044.jpg"
+              alt="صورة من معرض أحمد علي"
+              loading="lazy"
+              onclick="openLightbox(this)"
+              onerror="showImageError(this)">
+            <div class="photo-caption">صورة من ذكرياتي</div>
+          </article>
+
+          <article class="photo-card">
+            <img
+              src="https://raw.githubusercontent.com/aboalioraby17-source/ahmed-ali-ideas/main/IMG-20260929-WA0075.jpg"
+              alt="صورة من معرض أحمد علي"
+              loading="lazy"
+              onclick="openLightbox(this)"
+              onerror="showImageError(this)">
+            <div class="photo-caption">لحظة جميلة</div>
+          </article>
+
+          <article class="photo-card">
+            <img
+              src="https://raw.githubusercontent.com/aboalioraby17-source/ahmed-ali-ideas/main/IMG-20261011-WA0030.jpg"
+              alt="صورة من معرض أحمد علي"
+              loading="lazy"
+              onclick="openLightbox(this)"
+              onerror="showImageError(this)">
+            <div class="photo-caption">من أرشيف الصور</div>
+          </article>
+
+          <article class="photo-card">
+            <img
+              src="https://raw.githubusercontent.com/aboalioraby17-source/ahmed-ali-ideas/main/IMG-20261011-WA0032.jpg"
+              alt="صورة من معرض أحمد علي"
+              loading="lazy"
+              onclick="openLightbox(this)"
+              onerror="showImageError(this)">
+            <div class="photo-caption">ذكرى أحتفظ بها</div>
+          </article>
+
+        </div>
       </div>
-    </div>
+    </section>
+
+    <section id="artists">
+      <div class="container">
+        <div class="section-heading">
+          <h2>🎵 فنانون أحبهم</h2>
+          <p>أصوات وأغانٍ لها مكانة خاصة عندي ❤️</p>
+        </div>
+
+        <div class="artists-grid">
+
+          <article class="artist-card">
+            <div class="artist-cover ramy">🎤</div>
+            <div class="artist-info">
+              <h3>رامي صبري</h3>
+              <p>أغاني وإحساس مميز</p>
+              <a
+                class="artist-link"
+                href="https://www.youtube.com/results?search_query=رامي+صبري+أغاني"
+                target="_blank"
+                rel="noopener noreferrer">
+                ▶ استمع للأغاني
+              </a>
+            </div>
+          </article>
+
+          <article class="artist-card">
+            <div class="artist-cover tamer">🎶</div>
+            <div class="artist-info">
+              <h3>تامر عاشور</h3>
+              <p>أغانٍ تلامس القلب</p>
+              <a
+                class="artist-link"
+                href="https://www.youtube.com/results?search_query=تامر+عاشور+أغاني"
+                target="_blank"
+                rel="noopener noreferrer">
+                ▶ استمع للأغاني
+              </a>
+            </div>
+          </article>
+
+          <article class="artist-card">
+            <div class="artist-cover amr">🎧</div>
+            <div class="artist-info">
+              <h3>عمرو دياب</h3>
+              <p>أغانٍ متنوعة ومميزة</p>
+              <a
+                class="artist-link"
+                href="https://www.youtube.com/results?search_query=عمرو+دياب+أغاني"
+                target="_blank"
+                rel="noopener noreferrer">
+                ▶ استمع للأغاني
+              </a>
+            </div>
+          </article>
+
+        </div>
+
+        <p class="music-note">
+          أزرار الاستماع تفتح نتائج الأغاني على YouTube.
+        </p>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <div class="section-heading">
+          <h2>تواصل معي</h2>
+          <p>مساحة للتواصل والأفكار الجديدة</p>
+        </div>
+
+        <div class="contact-card">
+          <h3>شكرًا لزيارتك ❤️</h3>
+          <p>
+            أتمنى أن تجد في هذه المساحة شيئًا يعجبك.
+          </p>
+          <a class="btn" href="#home" style="margin-top:18px">
+            العودة إلى الأعلى ↑
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>© <span id="year"></span> Ahmed Ali | مساحة الأفكار</p>
+    <p>صُنع بكل حب ❤️</p>
+  </footer>
+
+  <div
+    class="lightbox"
+    id="lightbox"
+    role="dialog"
+    aria-modal="true"
+    aria-label="عرض الصورة بالحجم الكبير"
+    onclick="closeLightbox(event)">
+
+    <button
+      class="close-lightbox"
+      type="button"
+      aria-label="إغلاق الصورة"
+      onclick="closeLightbox(event)">
+      ×
+    </button>
+
+    <img id="lightboxImage" src="" alt="الصورة بالحجم الكبير">
   </div>
-</section>
 
-<section class="container">
-  <div class="quote">
-    <h2>كل فكرة عظيمة بدأت <span>بسؤال</span></h2>
-    <p>استمر في التعلم، وجرّب، ولا تتوقف عن الإبداع.</p>
-  </div>
-</section>
+  <script>
+    // تبديل الوضع الليلي والنهاري
+    const themeToggle = document.getElementById("themeToggle");
 
-<section class="container" id="contact">
-  <div class="contact">
-    <p>04 / تواصل</p>
-    <h2>عندك فكرة؟ <span>خلينا نبدأ</span></h2>
-    <p>يمكنك إضافة روابط حساباتك الاجتماعية هنا لاحقًا.</p>
-    <a class="btn primary" href="mailto:">تواصل عبر البريد</a>
-  </div>
-</section>
-</main>
+    themeToggle.addEventListener("click", function () {
+      document.body.classList.toggle("dark");
 
-<footer>
-  <div class="container">© <span id="year"></span> Ahmed Ali — جميع الحقوق محفوظة.</div>
-</footer>
+      const isDark = document.body.classList.contains("dark");
 
-<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="عرض الصورة">
-  <button id="closeBox" aria-label="إغلاق الصورة">×</button>
-  <img id="largeImage" src="" alt="الصورة المكبرة">
-</div>
+      themeToggle.textContent = isDark
+        ? "☀️ الوضع النهاري"
+        : "🌙 الوضع الليلي";
+    });
 
-<script>
-const menuBtn = document.getElementById('menuBtn');
-const navLinks = document.getElementById('navLinks');
-const themeBtn = document.getElementById('themeBtn');
-const lightbox = document.getElementById('lightbox');
-const largeImage = document.getElementById('largeImage');
-const closeBox = document.getElementById('closeBox');
-const images = [...document.querySelectorAll('.photo img')];
+    // السنة الحالية
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
 
-document.getElementById('year').textContent = new Date().getFullYear();
+    // تكبير الصور
+    function openLightbox(image) {
+      if (!image || !image.src) return;
 
-menuBtn.addEventListener('click', () => {
-  const opened = navLinks.classList.toggle('open');
-  menuBtn.setAttribute('aria-expanded', String(opened));
-});
+      const lightbox = document.getElementById("lightbox");
+      const largeImage = document.getElementById("lightboxImage");
 
-navLinks.querySelectorAll('a').forEach(link => {
-  link.addEventListener('click', () => {
-    navLinks.classList.remove('open');
-    menuBtn.setAttribute('aria-expanded', 'false');
-  });
-});
-
-themeBtn.addEventListener('click', () => {
-  document.body.classList.toggle('light');
-});
-
-function updateImageStatus(img, loaded) {
-  const status = img.closest('.photo').querySelector('.status');
-  status.textContent = loaded
-    ? 'تم تحميل الصورة بنجاح'
-    : 'تعذر تحميل الصورة. تحقق من اسم الملف في GitHub.';
-  status.style.color = loaded ? '#65d6a0' : '#ff8585';
-  updateGalleryStatus();
-}
-
-function updateGalleryStatus() {
-  const loaded = images.filter(img => img.dataset.loaded === 'yes').length;
-  const failed = images.filter(img => img.dataset.loaded === 'no').length;
-  const status = document.getElementById('galleryStatus');
-
-  if (loaded + failed < images.length) {
-    status.textContent = `تم تحميل ${loaded} من ${images.length} صور...`;
-  } else if (failed === 0) {
-    status.textContent = `جميع الصور (${loaded}) ظهرت بنجاح.`;
-  } else {
-    status.textContent = `ظهرت ${loaded} صور، وتعذر تحميل ${failed}. تحقق من أسماء الملفات.`;
-  }
-}
-
-images.forEach(img => {
-  img.addEventListener('load', () => {
-    img.dataset.loaded = 'yes';
-    updateImageStatus(img, true);
-  });
-
-  img.addEventListener('error', () => {
-    img.dataset.loaded = 'no';
-    updateImageStatus(img, false);
-  });
-
-  if (img.complete) {
-    if (img.naturalWidth > 0) {
-      img.dataset.loaded = 'yes';
-      updateImageStatus(img, true);
-    } else if (img.currentSrc) {
-      img.dataset.loaded = 'no';
-      updateImageStatus(img, false);
+      largeImage.src = image.src;
+      largeImage.alt = image.alt;
+      lightbox.classList.add("open");
+      document.body.style.overflow = "hidden";
     }
-  }
-});
 
-document.querySelectorAll('.photo').forEach(photo => {
-  photo.addEventListener('click', () => {
-    const img = photo.querySelector('img');
-    if (!img.naturalWidth) return;
-    largeImage.src = img.currentSrc || img.src;
-    largeImage.alt = img.alt;
-    lightbox.classList.add('open');
-  });
-});
+    function closeLightbox(event) {
+      if (
+        event &&
+        event.target.id !== "lightbox" &&
+        !event.target.classList.contains("close-lightbox")
+      ) {
+        return;
+      }
 
-function closeLightbox() {
-  lightbox.classList.remove('open');
-  largeImage.src = '';
-}
+      document.getElementById("lightbox").classList.remove("open");
+      document.body.style.overflow = "";
+    }
 
-closeBox.addEventListener('click', closeLightbox);
+    // رسالة عند تعذر تحميل صورة
+    function showImageError(image) {
+      const message = document.createElement("div");
+      message.className = "image-error";
+      message.textContent = "تعذر تحميل الصورة. تحقق من اسم الملف في GitHub.";
 
-lightbox.addEventListener('click', event => {
-  if (event.target === lightbox) closeLightbox();
-});
+      image.replaceWith(message);
+    }
 
-document.addEventListener('keydown', event => {
-  if (event.key === 'Escape') closeLightbox();
-});
-</script>
+    // إغلاق نافذة الصورة بزر Escape
+    document.addEventListener("keydown", function (event) {
+      if (event.key === "Escape") {
+        document.getElementById("lightbox").classList.remove("open");
+        document.body.style.overflow = "";
+      }
+    });
+  </script>
+
 </body>
 </html>
